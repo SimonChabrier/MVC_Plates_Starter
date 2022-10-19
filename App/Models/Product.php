@@ -131,9 +131,13 @@ class Product extends CoreModel
         FROM `products` 
         LEFT JOIN categories ON categories.id = products.id_category
         LEFT JOIN editors ON editors.id = products.id_editor
-        WHERE products.title LIKE '%$search%' OR products.description LIKE '%$search%'";
+        WHERE products.title LIKE :search OR products.description LIKE :search
+        ORDER BY `title`
+        ";
 
-        $pdoStatement = $pdoDBConnexion->query($sql);
+        $pdoStatement = $pdoDBConnexion->prepare($sql);
+        $pdoStatement->bindValue(':search', '%'.$search.'%');
+        $pdoStatement->execute();
 
         return $pdoStatement->fetchAll(\PDO::FETCH_CLASS, self::class);
     }
