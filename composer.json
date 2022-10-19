@@ -1,0 +1,21 @@
+{
+    "name": "simonchabrier/o-playstore-simon-chabrier",
+    "description": "mvc project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        }
+    },
+    "authors": [
+        {
+            "name": "SimonChabrier",
+            "email": "simonchabrier@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "^5.4"
+    },
+    "require": {
+        "symfony/routing": "^5.4"
+    }
+}
